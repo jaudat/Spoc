@@ -16,9 +16,9 @@
 
 	<h1>Spring Greetings</h1>
 
-	<c:if test="${not empty greetinglist}" >
+	<c:if test="${not empty greetinglist}">
 		<c:forEach items="${greetinglist}" var="greeting">
-			<b>Anonymous</b>
+			<b>@<c:out value="${greeting.username}"></c:out></b>
 			<br /> says
 			<br />
 			<c:out value="${greeting.greetingText}" />
@@ -27,7 +27,7 @@
 			<br />
 		</c:forEach>
 	</c:if>
-	<c:if test="${empty greetinglist}" >
+	<c:if test="${empty greetinglist}">
 		There are no greetings yet.
 	</c:if>
 

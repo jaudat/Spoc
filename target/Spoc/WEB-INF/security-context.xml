@@ -9,9 +9,22 @@
 	
 	<security:global-method-security secured-annotations="enabled" />
 	
-	<security:http auto-config="true">
+	<!-- if you wish to use @PreAuthorize instead... -->
+	<!-- <security:global-method-security pre-post-annotations="enabled" -->
+	
+	<security:http auto-config="true" access-denied-page="/WEB-INF/jsp/accessdenied.jsp">
+		<!-- note that the order matters!! -->
+		<security:intercept-url pattern="/login.jsp" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+		<security:intercept-url pattern="/WEB-INF/jsp/restrictedarea.jsp" access="ROLE_ADMIN" />
 		<security:intercept-url pattern="/**" access="ROLE_USER" />
+		<security:form-login login-page="/login.jsp"
+			login-processing-url="/loginProcess"
+			default-target-url="/index.jsp"
+			authentication-failure-url="/login.jsp?login_error=1" />
+		<security:logout logout-url="/logout" logout-success-url="/login.jsp" />
 	</security:http>
+	
+	<bean class="org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler" />
 	
 	<security:authentication-manager>
 		<security:authentication-provider>

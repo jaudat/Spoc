@@ -4,16 +4,21 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+
 import org.apache.log4j.Logger;
+
 import com.mckesson.domain.Greeting;
 import com.mckesson.domain.Color;
 import com.mckesson.service.GreetingService;
 import com.mckesson.web.form.GreetingForm;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.context.SecurityContextHolder;
 
 @Controller
 @RequestMapping("/home")
@@ -60,6 +65,8 @@ public class GreetingController {
 			
 			Greeting greeting = greetingForm.getGreeting();
 			greeting.setGreetingDate(new Date());
+			UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+			greeting.setUsername(userDetails.getUsername());
 			greetingService.addGreeting(greeting);
 			
 			List<Greeting> greetings = greetingService.getAllGreetings();
