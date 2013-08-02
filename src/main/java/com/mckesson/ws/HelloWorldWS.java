@@ -14,7 +14,7 @@ public class HelloWorldWS {
 	HelloWorldBo helloWorldBo;
 	
 	@WebMethod(operationName="getHelloWorld")
-	public String getHelloWorld() {
-		return helloWorldBo.getHelloWorld();
+	public String getHelloWorld(String name) {
+		return helloWorldBo.getHelloWorld(name);
 	}
 }
