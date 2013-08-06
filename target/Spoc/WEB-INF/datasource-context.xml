@@ -27,21 +27,23 @@
 		<property name="location">
 			<value>classes/database.properties</value>
 		</property>
-	</bean>
+	</bean> -->
 	
-	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource" destroy-method="close">
+	<context:property-placeholder location="classpath:database.properties" />
+	
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="${jdbc.driverClassName}" />
 		<property name="url" value="${jdbc.url}" />
 		<property name="username" value="${jdbc.username}" />
 		<property name="password" value="${jdbc.password}" />
-	</bean> -->
+	</bean>
 	
-	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+	<!-- <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
 		<property name="url" value="jdbc:mysql://localhost:3306/SpocDB" />
 		<property name="username" value="root" />
 		<property name="password" value="Monday@123" />
-	</bean>
+	</bean> -->
 	
 	<tx:annotation-driven transaction-manager="transactionManager" />
 	
