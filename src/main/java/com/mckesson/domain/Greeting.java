@@ -28,9 +28,6 @@ public class Greeting implements Serializable {
 	@Column(name = "GREETING_DATE")
 	private Date greetingDate;
 	
-	@Column(name = "USERNAME")
-	private String username;
-	
 	public Integer getId() {
 		return id;
 	}
@@ -53,13 +50,5 @@ public class Greeting implements Serializable {
 	
 	public void setGreetingDate(Date greetingDate) {
 		this.greetingDate = greetingDate;
-	}
-	
-	public String getUsername() {
-		return username;
-	}
-	
-	public void setUsername(String username) {
-		this.username = username;
 	}
 }

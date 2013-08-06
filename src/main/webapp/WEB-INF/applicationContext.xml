@@ -24,7 +24,6 @@
     </wss:binding>
 	
 	<import resource="datasource-context.xml" />
-	<import resource="security-context.xml" />
 	
 	<!-- Web service methods -->
 	<bean id="helloWs" class="com.mckesson.ws.HelloWorldWS" />

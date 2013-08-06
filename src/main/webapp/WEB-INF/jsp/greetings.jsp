@@ -18,7 +18,7 @@
 
 	<c:if test="${not empty greetinglist}">
 		<c:forEach items="${greetinglist}" var="greeting">
-			<b>@<c:out value="${greeting.username}"></c:out></b>
+			<b>@Anonymous</b>
 			<br /> says
 			<br />
 			<c:out value="${greeting.greetingText}" />
