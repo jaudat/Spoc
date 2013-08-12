@@ -1,5 +1,6 @@
 package com.mckesson.bo.impl;
 
+import java.awt.print.PrinterException;
 import java.io.FileInputStream;
 import java.io.IOException;
 
@@ -26,12 +27,12 @@ public class HelloWorldBoImpl implements HelloWorldBo {
 	
 	public String getHelloWorld(String name) {
 		genPDF(name);
-		try {
-			printPDF("HelloWorld.pdf");
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		try {
+//			printPDF("HelloWorld.pdf");
+//		} catch (Exception e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 		if (name == null || name.isEmpty())
 			return "Hello World!";
 		return "Hello " + name + "!";
@@ -55,11 +56,18 @@ public class HelloWorldBoImpl implements HelloWorldBo {
 			contentStream.close();
 
 			try {
-				document.save( "HelloWorld.pdf");
-			} catch (COSVisitorException e) {
+				document.silentPrint();
+			} catch (PrinterException e1) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				e1.printStackTrace();
 			}
+			
+//			try {
+//				document.save( "HelloWorld.pdf");
+//			} catch (COSVisitorException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
 			document.close();
 			
 		} catch (IOException e) {
@@ -71,17 +79,17 @@ public class HelloWorldBoImpl implements HelloWorldBo {
 		return "hello";
 	}
 	
-	public void printPDF(String name) throws Exception {
-			String filename = name;
-			DocFlavor flavor = DocFlavor.INPUT_STREAM.AUTOSENSE;
-			FileInputStream fis = new FileInputStream(filename);
-			DocAttributeSet das = new HashDocAttributeSet();
-			Doc pdfDoc = new SimpleDoc(fis, flavor, das);
-			PrintService defaultService = 
-			  PrintServiceLookup.lookupDefaultPrintService();
-			System.out.println("************** " + defaultService + " *********************");
-			DocPrintJob printJob = defaultService.createPrintJob();
-			printJob.print(pdfDoc, new HashPrintRequestAttributeSet());
-			fis.close();
-		  }
+//	public void printPDF(String name) throws Exception {
+//			String filename = name;
+//			DocFlavor flavor = DocFlavor.INPUT_STREAM.AUTOSENSE;
+//			FileInputStream fis = new FileInputStream(filename);
+//			DocAttributeSet das = new HashDocAttributeSet();
+//			Doc pdfDoc = new SimpleDoc(fis, flavor, das);
+//			PrintService defaultService = 
+//			  PrintServiceLookup.lookupDefaultPrintService();
+//			System.out.println("************** " + defaultService + " *********************");
+//			DocPrintJob printJob = defaultService.createPrintJob();
+//			printJob.print(pdfDoc, new HashPrintRequestAttributeSet());
+//			fis.close();
+//		  }
 }
