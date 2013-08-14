@@ -25,6 +25,8 @@
 	
 	<import resource="datasource-context.xml" />
 	
+	<bean id="greetingDao" class=="com.mckesson.dao.HibernateGreeterDao" />
+	
 	<!-- Web service methods -->
 	<bean id="helloWs" class="com.mckesson.ws.HelloWorldWS" />
 	<bean id="HelloWorldBo" class="com.mckesson.bo.impl.HelloWorldBoImpl" />

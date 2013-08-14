@@ -9,8 +9,8 @@ import org.springframework.stereotype.Repository;
 import com.mckesson.domain.Greeting;
 import org.springframework.beans.factory.annotation.Autowired;
 
-@Repository
-public class GreetingDao {
+@Repository("hibernateGreetingDao")
+public class HibernateGreetingDao implements GreetingDao {
 	
 	protected static Logger logger = Logger.getLogger("GreetingDao");
 	
