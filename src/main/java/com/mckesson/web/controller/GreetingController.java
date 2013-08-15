@@ -24,6 +24,8 @@ public class GreetingController {
 
 		protected static Logger logger = Logger.getLogger("GreetingController");
 		
+		private final String DEFAULT_FAVORITE_COLOR_CODE = "FFFFFF";
+		
 		private GreetingService greetingService;
 		
 		@Autowired
@@ -69,8 +71,9 @@ public class GreetingController {
 			model.put("greetinglist", greetings);
 			
 			String selectedColorCode = greetingForm.getColor().getColorCode();
-			if (selectedColorCode.equals("")) //if no color selected, then make default white
-				selectedColorCode = "FFFFFF";
+			//if no color selected, then make default white
+			if (selectedColorCode == null || selectedColorCode.equals(""))
+				selectedColorCode = DEFAULT_FAVORITE_COLOR_CODE;
 			model.put("colorcode", selectedColorCode);
 			
 			//This will resolve to /WEB-INF/jsp/greetings.jsp
@@ -84,7 +87,7 @@ public class GreetingController {
 			
 			List<Greeting> greetings = greetingService.getAllGreetings();
 			model.put("greetinglist", greetings);
-			model.put("colorcode", "FFFFFF");
+			model.put("colorcode", DEFAULT_FAVORITE_COLOR_CODE);
 			
 			//This will resolve to /WEB-INF/jsp/greetings.jsp
 			return "greetings";
