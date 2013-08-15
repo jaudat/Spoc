@@ -12,10 +12,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 @Repository("hibernateGreetingDao")
 public class HibernateGreetingDao implements GreetingDao {
 	
-	protected static Logger logger = Logger.getLogger("GreetingDao");
+	protected static Logger logger = Logger.getLogger("HibernateGreetingDao");
+	
+	public HibernateGreetingDao() {}
 	
 	@Autowired
 	private SessionFactory sessionFactory;
+	
+	public void setSessionFactory(SessionFactory sessionFactory) {
+		this.sessionFactory = sessionFactory;
+	}
 	
 	public List<Greeting> getAllGreetings() {
 		Session session = sessionFactory.getCurrentSession();
