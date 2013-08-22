@@ -161,14 +161,21 @@
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
-        	<groupId>org.mockito</groupId>
-    		<artifactId>mockito-all</artifactId>
-    		<version>1.8.5</version>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-all</artifactId>
+			<version>1.8.5</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
 			<version>3.0.0.RELEASE</version>
+		</dependency>
+
+		<!-- Sybase database driver -->
+		<dependency>
+			<groupId>com.sybase</groupId>
+			<artifactId>jconn4</artifactId>
+			<version>7.0</version>
 		</dependency>
 
 		<!-- JAX-WS -->

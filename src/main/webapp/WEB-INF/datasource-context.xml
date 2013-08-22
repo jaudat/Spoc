@@ -16,9 +16,11 @@
 		<property name="packagesToScan" value="com.mckesson" />
 		<property name="hibernateProperties">
 			<props>
-				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="hibernate.dialect">org.hibernate.dialect.SybaseAnywhereDialect</prop>
+ 				<prop key="hibernate.jdbc.use_get_generated_keys">false</prop>
 				<prop key="hibernate.show_sql">true</prop>
-				<prop key="hibernate.hbm2ddl.auto">create</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				<prop key="hibernate.format_sql">false</prop>
 			</props>
 		</property>
 	</bean>
