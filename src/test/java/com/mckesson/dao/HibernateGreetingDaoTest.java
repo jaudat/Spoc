@@ -40,11 +40,11 @@ public class HibernateGreetingDaoTest extends TestCase {
 		Greeting greeting2 = new Greeting();
 		greeting2.setGreetingText("Hello there everyone...");
 		greeting2.setGreetingDate(new Date());
-		expectedGreetingList.add(greeting1);
+		expectedGreetingList.add(greeting2);
 		Greeting greeting3 = new Greeting();
 		greeting3.setGreetingText("Hey there");
 		greeting3.setGreetingDate(new Date());
-		expectedGreetingList.add(greeting1);
+		expectedGreetingList.add(greeting3);
 		//WHEN
 		HibernateGreetingDao hibernateGreetingDao = new HibernateGreetingDao();
 		hibernateGreetingDao.setSessionFactory(sessionFactory);

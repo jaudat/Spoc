@@ -78,7 +78,7 @@ public class GreetingControllerTest extends TestCase {
 	//test that when no color is selected, the default color should be white
 	//the color should end up inside the model and is called 'colorcode'
 	@Test
-	public void testModelShouldCOntainColorWhiteWhenNoColorIsSelected() {
+	public void testModelShouldContainColorWhiteWhenNoColorIsSelected() {
 		//GIVEN
 		//no color value is initialized
 		//WHEN
